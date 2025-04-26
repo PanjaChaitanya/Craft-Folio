@@ -1,4 +1,3 @@
-
 //api.js
 import axios from 'axios';
 
@@ -8,16 +7,19 @@ const API = axios.create({
 
 export const login = (data) => API.post('/auth/login', data);
 export const getProjects = () => API.get('/projects');
+
 export const createProject = (data, token) =>
-  API.post('/admin/projects', data, {
+  API.post('/projects', data, {
     headers: { Authorization: `Bearer ${token}` },
   });
+
 export const updateProject = (id, updatedData, token) =>
-  axios.put(`https://localhost:5000/api/projects/${id}`, updatedData, {
+  API.put(`/projects/${id}`, updatedData, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
 export const deleteProject = (id, token) =>
-  axios.delete(`https://localhost:5000/api/projects/${id}`, {
+  API.delete(`/projects/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
+

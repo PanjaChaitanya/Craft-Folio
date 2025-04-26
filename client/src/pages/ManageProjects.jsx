@@ -6,6 +6,7 @@ import { getProjects, createProject, updateProject, deleteProject } from '../api
 export default function ManageProjects() {
   const [projects, setProjects] = useState([]);
   const [editingProject, setEditingProject] = useState(null);
+  const [editForm, setEditForm] = useState({});
   const [newProject, setNewProject] = useState({
   title: '',
   description: '',
@@ -24,53 +25,31 @@ export default function ManageProjects() {
   }, []);
 
   const handleCreate = async () => {
-    try {
-      if (newProject._id) {
-        // Update existing project
-        const res = await axios.put(
-          `http://localhost:5000/api/projects/${newProject._id}`,
-          newProject,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        setProjects(projects.map(p => p._id === newProject._id ? res.data.project : p));
-      } else {
-        // Create new project
-        const res = await createProject(newProject, token);
-        setProjects([...projects, res.data.project]);
-      }
+  try {
+    const res = await createProject(newProject, token);
+    setProjects([...projects, res.data.project]);
+    setNewProject({ title: '', description: '', imageUrl: '', liveUrl: '', githubUrl: '' });
+  } catch (err) {
+    alert('Error saving project');
+  }
+};
 
-      setNewProject({
-        title: '',
-        description: '',
-        imageUrl: '',
-        liveUrl: '',
-        githubUrl: ''
-      });
-    } catch (err) {
-      alert('Error saving project');
-    }
-  };
+const handleDelete = async (id) => {
+  try {
+    await deleteProject(id, token);
+    setProjects(projects.filter((p) => p._id !== id));
+  } catch (err) {
+    alert('Error deleting project');
+  }
+};
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setProjects(projects.filter(p => p._id !== id));
-    } catch (err) {
-      alert('Error deleting project');
-    }
-  };
-
-  const handleEdit = (project) => {
-    setNewProject(project); // This fills the form with existing data
-  };
 
   return (
     <div className="p-8">
-      <h2 className="text-xl font-bold mb-4">Manage Projects</h2>
+      <h2 className="text-xl text-center font-bold mb-4">Manage Projects</h2>
 
       <div className="mb-6">
+        <p className='text-xl font-semibold mb-2'>Add New Projects here..</p>
         <input
           placeholder="Title"
           value={newProject.title}
@@ -90,7 +69,7 @@ export default function ManageProjects() {
           className="border p-2 mb-2 w-full rounded"
         />
         <input
-          placeholder="Link"
+          placeholder="Live Link"
           value={newProject.liveUrl}
           onChange={(e) => setNewProject({ ...newProject, liveUrl: e.target.value })}
           className="border p-2 mb-2 w-full rounded"
@@ -101,81 +80,55 @@ export default function ManageProjects() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-       {projects.map((p) => (
-          <div key={p._id} className="border p-4 rounded shadow bg-white">
-            {editingProject === p._id ? (
-              <>
-                <input
-                  value={newProject.title}
-                  onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
-                  className="border p-2 mb-1 w-full rounded"
-                />
-                <input
-                  value={newProject.description}
-                  onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
-                  className="border p-2 mb-1 w-full rounded"
-                />
-                <input
-                  value={newProject.image}
-                  onChange={(e) => setNewProject({ ...newProject, image: e.target.value })}
-                  className="border p-2 mb-1 w-full rounded"
-                />
-                <input
-                  value={newProject.link}
-                  onChange={(e) => setNewProject({ ...newProject, link: e.target.value })}
-                  className="border p-2 mb-1 w-full rounded"
-                />
-                <div className="flex gap-2">
-                  <button
-                    onClick={async () => {
-                      const res = await updateProject(p._id, newProject, token);
-                      setProjects(projects.map((proj) => (proj._id === p._id ? res.data : proj)));
-                      setEditingProject(null);
-                      setNewProject({ title: '', description: '', image: '', link: '' });
-                    }}
-                    className="bg-blue-600 text-white py-1 px-3 rounded"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setEditingProject(null)}
-                    className="bg-gray-400 text-white py-1 px-3 rounded"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p>{p.description}</p>
-                <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">Visit</a>
-                <div className="flex gap-2 mt-2">
-                  <button
-                    onClick={() => {
-                      setEditingProject(p._id);
-                      setNewProject({ title: p.title, description: p.description, image: p.image, link: p.link });
-                    }}
-                    className="bg-yellow-500 text-white py-1 px-3 rounded"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={async () => {
-                      await deleteProject(p._id, token);
-                      setProjects(projects.filter((proj) => proj._id !== p._id));
-                    }}
-                    className="bg-red-600 text-white py-1 px-3 rounded"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        ))}
-
-
+      {projects.map((p) => (
+        <div key={p._id} className="border p-4 rounded shadow bg-white">
+          {editingProject === p._id ? (
+            <div className=''>
+              <div>
+                <b>Title: </b>
+                <input className='border rounded mb-2 p-2 w-full' value={editForm.title} onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} />
+              </div>
+              <div>
+                <b>Live Url :</b>
+                <input className='border rounded mb-2 p-2 w-full' value={editForm.liveUrl} onChange={(e) => setEditForm({...editForm,liveUrl: e.target.value})} />
+              </div>
+              <div>
+                <b>Image Link :</b>
+                <input className='border rounded mb-2 p-2 w-full' value={editForm.imageUrl} onChange={(e) => setEditForm({...editForm,imageUrl: e.target.value})} />
+              </div>
+               <div>
+                <b>Description: </b>
+                <textarea className='border rounded mb-2 p-2 w-full' value={editForm.description} onChange={(e) => setEditForm({ ...editForm, description: e.target.value })} />
+              </div>
+              <div className="buttons flex justify-around">
+                 <button
+                 className='bg-green-400 px-3 py-1 rounded'
+                onClick={async () => {
+                  const res = await updateProject(p._id, editForm, token);
+                  setProjects(projects.map((proj) => (proj._id === p._id ? res.data : proj)));
+                  setEditingProject(null);
+                }}
+              >
+                Save
+              </button>
+              <button className='bg-red-500 px-3 py-1 rounded' onClick={() => setEditingProject(null)}>Cancel</button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <h3><b>Title :</b> {p.title}</h3>
+              <img src={p.imageUrl} alt={p.title} className="h-48 w-full object-cover rounded mb-2" />
+              <p><b>Description :</b> {p.description}</p>
+              <p><b>Live Url :</b> {p.liveUrl}</p>
+              <p><b>Github :</b> {p.githubUrl}</p>
+              <div className=' update-buttons flex flex-wrap justify-around'>
+                <button className='bg-amber-500 px-3 py-1 rounded' onClick={() => { setEditingProject(p._id); setEditForm(p); }}>Edit</button>
+                <button className='bg-red-600 px-3 py-1 rounded' onClick={() => handleDelete(p._id)}>Delete</button>
+              </div>
+            </>
+          )}
+        </div>
+      ))}
       </div>
     </div>
   );
