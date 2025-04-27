@@ -18,18 +18,7 @@ export default function Projects() {
             <img src={p.imageUrl} alt={p.title} className="h-48 w-full object-cover rounded mb-2" />
             <h2 className="text-xl font-semibold">{p.title}</h2>
             <p>{p.description}</p>
-            <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden 
-            text-sm font-medium text-black rounded-lg group 
-            bg-gradient-to-br from-green-400 to-blue-600
-            hover:text-white group-hover:from-green-400 group-hover:to-blue-600 
-            focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 
-            shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80">
-              <span class="relative px-4 py-1.5 transition-all ease-in duration-75 
-           bg-white dark:bg-gray-900 rounded-md 
-           group-hover:bg-transparent group-hover:dark:bg-transparent">
-              Live 
-            </span>
-            </a>
+            <button class="group inline-flex h-9 items-center justify-center rounded bg-neutral-950 px-6 font-medium text-neutral-200"><a href={p.liveUrl} target="_blank" >Live</a><div class="relative ml-1 h-5 w-5 overflow-hidden"><div class="absolute transition-all duration-200 group-hover:-translate-y-5 group-hover:translate-x-4"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 -translate-x-4"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></button>
           </div>
         ))}
       </div>

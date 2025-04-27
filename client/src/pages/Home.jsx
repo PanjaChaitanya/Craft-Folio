@@ -23,10 +23,10 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section>
+        <section id='projects'>
           <Projects />
         </section>
-        
+
         {/* Skills Section */}
         <section id='skills' className="mb-12">
           <Skills />
