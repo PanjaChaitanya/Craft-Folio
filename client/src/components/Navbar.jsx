@@ -14,13 +14,13 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/';
 
   return (
-    <nav class="bg-white border-gray-200 dark:bg-gray-900 sticky  top-0">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 sticky  top-0">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             {/* <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> */}
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Craft Folio</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Craft Folio</span>
         </Link>
-        {token && <Link to="/dashboard" className="group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200"><span>Dashboard</span><div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]"><div class="relative h-full w-8 bg-white/20"></div></div></Link>}
+        {token && <Link to="/dashboard" className="group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200"><span>Dashboard</span><div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]"><div className="relative h-full w-8 bg-white/20"></div></div></Link>}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           type="button"
@@ -48,55 +48,55 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white"
+                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
                   <span className="relative z-10">Home</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
-                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-blue-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
               </li>
               <li>
                 <a
                   href="#projects"
-                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white"
+                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
                   <span className="relative z-10">Projects</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
-                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-blue-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
               </li>
               <li>
                 <a
                   href="#skills"
-                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white"
+                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
                   <span className="relative z-10">Skills</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
-                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-blue-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white"
+                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
                   <span className="relative z-10">Services</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
-                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-blue-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white"
+                  className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
                   <span className="relative z-10">Contact</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
-                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-blue-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+                    <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
               </li>

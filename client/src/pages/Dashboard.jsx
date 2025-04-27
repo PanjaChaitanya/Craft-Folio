@@ -1,5 +1,7 @@
+// Dashboard.jsx
 import { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, NavLink, Outlet } from 'react-router-dom';
+import { FiGrid, FiFolder, FiAward, FiSettings, FiLogOut } from 'react-icons/fi';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -9,18 +11,82 @@ export default function Dashboard() {
     if (!token) navigate('/login');
   }, [token, navigate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
-    <div className="p-8">
-      <h1 className="text-2xl text-center font-bold mb-4">Admin Dashboard</h1>
-      <nav className="flex flex-col gap-2">
-        <Link to="/manage-projects" className="text-blue-600 underline">
-          Manage Projects
-        </Link>
-         <Link to="/manage-skills" className="text-blue-600 underline">
-          Manage Skills
-        </Link>
-        {/* Add links to Manage Skills or Profile later */}
-      </nav>
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md hidden md:block relative">
+        <div className="p-6">
+          <h1 className="text-xl font-bold text-indigo-700">Admin Portal</h1>
+        </div>
+        <nav className="mt-6">
+          <NavLink
+            to="/dashboard"
+            end
+            className={({ isActive }) =>
+              `flex items-center px-6 py-3 text-gray-600 hover:text-indigo-700 hover:bg-indigo-50 transition-colors border-l-4 ${
+                isActive ? 'border-indigo-600 text-indigo-700 bg-indigo-50' : 'border-transparent'
+              }`
+            }
+          >
+            <FiGrid size={18} className="mr-3" />
+            Overview
+          </NavLink>
+          <NavLink
+            to="manage-projects"
+            className={({ isActive }) =>
+              `flex items-center px-6 py-3 text-gray-600 hover:text-indigo-700 hover:bg-indigo-50 transition-colors border-l-4 ${
+                isActive ? 'border-indigo-600 text-indigo-700 bg-indigo-50' : 'border-transparent'
+              }`
+            }
+          >
+            <FiFolder size={18} className="mr-3" />
+            Projects
+          </NavLink>
+          <NavLink
+            to="manage-skills"
+            className={({ isActive }) =>
+              `flex items-center px-6 py-3 text-gray-600 hover:text-indigo-700 hover:bg-indigo-50 transition-colors border-l-4 ${
+                isActive ? 'border-indigo-600 text-indigo-700 bg-indigo-50' : 'border-transparent'
+              }`
+            }
+          >
+            <FiAward size={18} className="mr-3" />
+            Skills
+          </NavLink>
+          
+        </nav>
+        <div className="absolute bottom-0 w-full p-4">
+          <button
+            onClick={handleLogout}
+            className="flex items-center w-full p-3 text-gray-600 hover:text-red-500 transition-colors rounded-lg hover:bg-red-50"
+          >
+            <FiLogOut className="mr-3" size={18} />
+            Logout
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-auto">
+        <header className="bg-white shadow-sm p-4 flex justify-between items-center">
+          <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
+          <div className="flex items-center space-x-4">
+            <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
+              <span className="text-indigo-700 font-medium">A</span>
+            </div>
+          </div>
+        </header>
+
+        <div className="p-6">
+          {/* This is where child pages render */}
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 }
