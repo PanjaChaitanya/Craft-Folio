@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getProjects, createProject, updateProject, deleteProject } from '../api';
 
-export default function ManageProjects() {
+const ManageProjects = () => {
   const [projects, setProjects] = useState([]);
   const [editingProject, setEditingProject] = useState(null);
   const [editForm, setEditForm] = useState({});
@@ -133,3 +133,4 @@ const handleDelete = async (id) => {
     </div>
   );
 }
+export default ManageProjects;

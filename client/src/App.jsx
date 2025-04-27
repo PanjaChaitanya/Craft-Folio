@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ManageProjects from './pages/ManageProjects';
 import Navbar from './components/Navbar';
+import ManageSkills from './pages/ManageSkills';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manage-projects" element={<ManageProjects />} />
+        <Route path="/manage-skills" element={<ManageSkills/>}></Route>
       </Routes>
     </Router>
   );

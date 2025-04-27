@@ -11,10 +11,13 @@ export default function Dashboard() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+      <h1 className="text-2xl text-center font-bold mb-4">Admin Dashboard</h1>
       <nav className="flex flex-col gap-2">
         <Link to="/manage-projects" className="text-blue-600 underline">
           Manage Projects
+        </Link>
+         <Link to="/manage-skills" className="text-blue-600 underline">
+          Manage Skills
         </Link>
         {/* Add links to Manage Skills or Profile later */}
       </nav>

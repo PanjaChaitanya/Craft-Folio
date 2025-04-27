@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import projectRoutes from './routes/projectRoutes.js'
+import skillRoutes from './routes/skillRoutes.js'
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/skills',skillRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
