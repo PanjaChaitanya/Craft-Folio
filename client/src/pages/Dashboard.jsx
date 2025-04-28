@@ -1,6 +1,6 @@
 // Dashboard.jsx
 import { useEffect } from 'react';
-import { useNavigate, Link, NavLink, Outlet } from 'react-router-dom';
+import { useNavigate, NavLink, Outlet } from 'react-router-dom';
 import { FiGrid, FiFolder, FiAward, FiSettings, FiLogOut } from 'react-icons/fi';
 
 export default function Dashboard() {
@@ -11,15 +11,10 @@ export default function Dashboard() {
     if (!token) navigate('/login');
   }, [token, navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="h-screen bg-gray-50 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md hidden md:block relative">
+      <aside className="w-64 bg-white shadow-md hidden md:block relative overflow-hidden">
         <div className="p-6">
           <h1 className="text-xl font-bold text-indigo-700">Admin Portal</h1>
         </div>
@@ -60,20 +55,11 @@ export default function Dashboard() {
           </NavLink>
           
         </nav>
-        <div className="absolute bottom-0 w-full p-4">
-          <button
-            onClick={handleLogout}
-            className="flex items-center w-full p-3 text-gray-600 hover:text-red-500 transition-colors rounded-lg hover:bg-red-50"
-          >
-            <FiLogOut className="mr-3" size={18} />
-            Logout
-          </button>
-        </div>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 overflow-auto">
-        <header className="bg-white shadow-sm p-4 flex justify-between items-center">
+        <header className="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0">
           <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
           <div className="flex items-center space-x-4">
             <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
@@ -82,7 +68,7 @@ export default function Dashboard() {
           </div>
         </header>
 
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto">
           {/* This is where child pages render */}
           <Outlet />
         </div>

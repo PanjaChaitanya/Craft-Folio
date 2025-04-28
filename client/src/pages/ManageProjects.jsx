@@ -47,32 +47,30 @@ const handleDelete = async (id) => {
   return (
     <div className="p-8">
       <h2 className="text-xl text-center font-bold mb-4">Manage Projects</h2>
-
       <div className="mb-6">
-        <p className='text-xl font-semibold mb-2'>Add New Projects here..</p>
         <input
           placeholder="Title"
           value={newProject.title}
           onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
-          className="border p-2 mb-2 w-full rounded"
+          className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
         />
-        <input
+        <textarea
           placeholder="Description"
           value={newProject.description}
           onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
-          className="border p-2 mb-2 w-full rounded"
+          className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
         />
         <input
           placeholder="Image URL"
           value={newProject.imageUrl}
           onChange={(e) => setNewProject({ ...newProject, imageUrl: e.target.value })}
-          className="border p-2 mb-2 w-full rounded"
+          className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
         />
         <input
           placeholder="Live Link"
           value={newProject.liveUrl}
           onChange={(e) => setNewProject({ ...newProject, liveUrl: e.target.value })}
-          className="border p-2 mb-2 w-full rounded"
+          className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
         />
         <button onClick={handleCreate} className="bg-green-600 text-white py-2 px-4 rounded">
           Add Project
@@ -81,24 +79,24 @@ const handleDelete = async (id) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {projects.map((p) => (
-        <div key={p._id} className="border p-4 rounded shadow bg-white">
+        <div key={p._id} className=" p-4 rounded shadow bg-white">
           {editingProject === p._id ? (
             <div className=''>
               <div>
                 <b>Title: </b>
-                <input className='border rounded mb-2 p-2 w-full' value={editForm.title} onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} />
+                <input className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" value={editForm.title} onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} />
               </div>
               <div>
                 <b>Live Url :</b>
-                <input className='border rounded mb-2 p-2 w-full' value={editForm.liveUrl} onChange={(e) => setEditForm({...editForm,liveUrl: e.target.value})} />
+                <input className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" value={editForm.liveUrl} onChange={(e) => setEditForm({...editForm,liveUrl: e.target.value})} />
               </div>
               <div>
                 <b>Image Link :</b>
-                <input className='border rounded mb-2 p-2 w-full' value={editForm.imageUrl} onChange={(e) => setEditForm({...editForm,imageUrl: e.target.value})} />
+                <input className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" value={editForm.imageUrl} onChange={(e) => setEditForm({...editForm,imageUrl: e.target.value})} />
               </div>
                <div>
                 <b>Description: </b>
-                <textarea className='border rounded mb-2 p-2 w-full' value={editForm.description} onChange={(e) => setEditForm({ ...editForm, description: e.target.value })} />
+                <textarea className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 mb-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" value={editForm.description} onChange={(e) => setEditForm({ ...editForm, description: e.target.value })} />
               </div>
               <div className="buttons flex justify-around">
                  <button

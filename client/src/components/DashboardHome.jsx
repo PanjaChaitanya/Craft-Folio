@@ -1,26 +1,43 @@
 // DashboardHome.jsx
+import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FiFolder, FiAward } from 'react-icons/fi';
-
+import { getStats } from '../api';
+import CountUp from './CountUp';
 export default function DashboardHome() {
-  return (
+    
+    const [stats, setStats] = useState({projects : 0, skills : 0})
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        getStats(token).then(res=>setStats(res.data)).catch(err => console.error(err))
+    }, [])
+    
+    return (
     <>
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h4 className="text-sm font-medium text-gray-500">Total Projects</h4>
-          <p className="text-2xl font-bold mt-1 mb-2 text-gray-800">24</p>
-          <p className="text-sm text-green-600">+3 this month</p>
+          <CountUp
+            from={0}
+            to={stats.projects}
+            separator=","
+            direction="up"
+            duration={1}
+            className="text-2xl font-bold mt-1 mb-2 text-gray-800"
+            />
         </div>
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h4 className="text-sm font-medium text-gray-500">Skills</h4>
-          <p className="text-2xl font-bold mt-1 mb-2 text-gray-800">15</p>
-          <p className="text-sm text-green-600">+2 recently</p>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm p-6">
-          <h4 className="text-sm font-medium text-gray-500">Active Users</h4>
-          <p className="text-2xl font-bold mt-1 mb-2 text-gray-800">142</p>
-          <p className="text-sm text-green-600">+12 today</p>
+          <CountUp
+            from={0}
+            to={stats.skills}
+            separator=","
+            direction="up"
+            duration={1}
+            className="text-2xl font-bold mt-1 mb-2 text-gray-800"
+            />
         </div>
       </div>
 

@@ -42,3 +42,8 @@ export const deleteSkill = (id, token) =>
   API.delete(`/skills/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
+
+export const getStats = (token) =>
+   API.get('/stats',{
+    headers: {Authorization: `Bearer ${token}`}
+   });

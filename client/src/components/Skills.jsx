@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 import { getSkills } from '../api'
 
-
 const Skills = () => {
     const [skills, setSkills] = useState([]);
 

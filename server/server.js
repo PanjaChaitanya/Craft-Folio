@@ -7,7 +7,7 @@ import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import projectRoutes from './routes/projectRoutes.js'
 import skillRoutes from './routes/skillRoutes.js'
-
+import stats from './routes/stats.js'
 dotenv.config();
 
 const app = express();
@@ -18,12 +18,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills',skillRoutes);
-
+app.use('/api/stats', stats)
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
     app.listen(process.env.PORT, () => {
-      console.log(`🚀 Server running at http://localhost:${process.env.PORT}`);
+      console.log(`Server running at http://localhost:${process.env.PORT}`);
     });
   })
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+  .catch((err) => console.error('MongoDB connection error:', err));
