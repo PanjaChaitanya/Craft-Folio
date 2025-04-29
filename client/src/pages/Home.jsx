@@ -14,14 +14,14 @@ export default function Home() {
         />
       </Helmet>
 
-      <div className="p-8">
+      <div className=" barlow-semi-condensed">
         {/* Intro / Hero Section */}
-        <section className="mb-12 text-center">
+        <section className="mb-25 text-center">
           <Hero/>
         </section>
 
         {/* Projects Section */}
-        <section id='projects'>
+        <section id='projects' className='mt-20'>
           <Projects />
         </section>
 

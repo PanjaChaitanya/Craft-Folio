@@ -7,14 +7,14 @@ const Hero = () => {
 	return (
 		<div
 			id="home"
-			className="first-letter:relative h-screen bg-white flex items-center justify-center px-4 md:px-8 lg:px-16"
+			className="barlow-semi-condensed first-letter:relative h-11/12 mt-5 bg-white flex items-center px-4 md:px-8 lg:px-16"
 		>
-			<div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 min-h-screen mt-20 sm:mt-0">
+			<div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 max-h-screen mt-2 sm:mt-0">
 				{/* Left Content */}
-				<div className="flex-1 space-y-6 ml-0 sm:ml-16">
+				<div className="flex-1 text-left space-y-6 ml-0 sm:ml-16">
 					<div className="mb-5">
 						<h2 className="text-md uppercase tracking-wider text-gray-600">
-							Hello, My name is
+							Hello, My name is 
 						</h2>
 						<div className="w-14 h-[2px] bg-gray-500 mt-2" />
 					</div>
@@ -59,9 +59,9 @@ const Hero = () => {
 
 				{/* Right Content - Image */}
 				<div className="flex justify-center items-center">
-					<div className="aspect-square rounded-full overflow-hidden bg-gray-900 mt-0 w-[280px] sm:w-[300px] md:mt-20 lg:mt-0 md:w-[350px] lg:w-[450px]">
+					<div className="aspect-square rounded-full overflow-hidden bg-gray-400 mt-0 w-[280px] sm:w-[300px] md:mt-20 lg:mt-0 md:w-[350px] lg:w-[450px]">
 						<img
-							src="/images/profile.PNG"
+							src="/images/mypic.png"
 							alt="Profile"
 							width={1920}
 							height={1920}
