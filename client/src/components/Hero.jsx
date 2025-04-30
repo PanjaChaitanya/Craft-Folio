@@ -2,12 +2,14 @@ import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Magnet from './Magnet'
+import BlurText from "./BlurText";
 
 const Hero = () => {
 	return (
 		<div
 			id="home"
-			className="barlow-semi-condensed first-letter:relative h-11/12 mt-5 bg-white flex items-center px-4 md:px-8 lg:px-16"
+			className="barlow-semi-condensed first-letter:relative h-11/12 mt-5 flex items-center px-4 md:px-8 lg:px-16"
 		>
 			<div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 max-h-screen mt-2 sm:mt-0">
 				{/* Left Content */}
@@ -20,7 +22,12 @@ const Hero = () => {
 					</div>
 					<div>
 						<h1 className="text-5xl md:text-6xl font-semibold mt-2">
-							Chaitanya Panja
+							<BlurText
+							text="Chaitanya Panja"
+							delay={150}
+							animateBy="lettters"
+							direction="bottom"
+							/>
 						</h1>
 						<h3 className="text-2xl md:text-3xl text-gray-600 mt-2">
 							Frontend Developer
@@ -36,8 +43,15 @@ const Hero = () => {
 								create solutions that make a difference in the world.
 							</p>
 						</div>
-
-						<div className="flex items-center space-x-4 pt-4">
+						<div className="flex justify-between">
+							<Magnet padding={50} disabled={false} magnetStrength={1}>
+								<button className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">Resume</button>
+							</Magnet>
+							<Magnet padding={50} disabled={false} magnetStrength={1}>
+								<button className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">Contact</button>
+							</Magnet>
+						</div>
+						<div className="flex items-center space-x-4 pt-10">
 							<Link to="https://github.com/Moyo-Made">
 								<FaGithub size={20} />
 							</Link>

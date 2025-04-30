@@ -14,7 +14,7 @@ export default function Projects() {
       <h1 className="text-3xl text-center font-bold mb-6"> PROJECTS </h1>
 
         {projects.map((p) => (
-          <div key={p._id} className=" bg-white flex flex-col-reverse lg:flex-row items-center justify-center gap-12 max-h-screen py-4 mt-10 shadow rounded">
+          <div key={p._id} className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 max-h-screen py-4 mt-10 shadow rounded">
             {/* Project Left Details */}
 				    <div className="flex-1 text-left space-y-6 ml-0 sm:ml-16">
               <h2 className="text-xl font-semibold">{p.title}</h2>
