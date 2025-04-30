@@ -4,15 +4,16 @@ import Skills from '../components/Skills';
 import Hero from '../components/Hero';
 import Particles from '../components/Particles';
 export default function Home() {
-  return (
-    <>
-      <Helmet>
+  <Helmet>
         <title>Craft Folio - Portfolio CMS</title>
         <meta
           name="description"
           content="Manage and showcase projects dynamically"
         />
       </Helmet>
+  return (
+    <>
+      
 
       <div className=" barlow-semi-condensed">
         <section 

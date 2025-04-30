@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
 import DashboardHome from './components/DashboardHome';
+import ManageProfile from './pages/ManageProfile';
 import ManageProjects from './pages/ManageProjects';
 import ManageSkills from './pages/ManageSkills';
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route index element={<DashboardHome />} />
           <Route path="manage-projects" element={<ManageProjects />} />
           <Route path="manage-skills" element={<ManageSkills/>}></Route>
+          <Route path="manage-profile" element={<ManageProfile/>}></Route>
         </Route>
       </Routes>
     </Router>

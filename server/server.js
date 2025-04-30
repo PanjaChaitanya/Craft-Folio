@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
+import profileRoutes from './routes/profileRoutes.js';
 import projectRoutes from './routes/projectRoutes.js'
 import skillRoutes from './routes/skillRoutes.js'
 import stats from './routes/stats.js'
@@ -16,6 +17,8 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use("/api/profile", profileRoutes);
+app.use('/uploads', express.static('uploads'));
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills',skillRoutes);
 app.use('/api/stats', stats)

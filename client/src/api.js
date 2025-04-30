@@ -47,3 +47,16 @@ export const getStats = (token) =>
    API.get('/stats',{
     headers: {Authorization: `Bearer ${token}`}
    });
+
+export const getProfiles = () => API.get('/profile');
+
+export const createProfile = (formData, token) =>
+  API.post('/profile', formData, {
+     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } 
+    });
+    
+export const updateProfile = (id, formData, token) => 
+  API.put(`/profile/${id}`, formData, { 
+    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } 
+  });
+export const deleteProfile = (id, token) => API.delete(`/profile/${id}`, { headers: { 'Authorization': `Bearer ${token}` } });

@@ -2,6 +2,7 @@
 import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FiFolder, FiAward } from 'react-icons/fi';
+import { User } from 'lucide-react';
 import { getStats } from '../api';
 import CountUp from './CountUp';
 export default function DashboardHome() {
@@ -58,6 +59,13 @@ export default function DashboardHome() {
           >
             <FiAward size={20} className="text-indigo-600 mb-2" />
             <span className="text-sm font-medium text-gray-700">Manage Skills</span>
+          </Link>
+          <Link
+            to="manage-profile"
+            className="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-indigo-50 hover:border-indigo-100 transition-colors"
+          >
+            <User size={20} className="text-indigo-600 mb-2" />
+            <span className="text-sm font-medium text-gray-700">Manage Profile</span>
           </Link>
         </div>
       </div>

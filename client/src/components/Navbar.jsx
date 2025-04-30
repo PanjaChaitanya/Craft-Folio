@@ -61,7 +61,7 @@ const Navbar = () => {
                   href="#projects"
                   className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
-                  <span className="relative z-10">Projects</span>
+                  <span className="relative z-50">Projects</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
                     <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
@@ -72,7 +72,7 @@ const Navbar = () => {
                   href="#skills"
                   className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
-                  <span className="relative z-10">Skills</span>
+                  <span className="relative z-50">Skills</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
                     <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
@@ -83,7 +83,7 @@ const Navbar = () => {
                   href="#"
                   className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
-                  <span className="relative z-10">Services</span>
+                  <span className="relative z-50">Services</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
                     <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
@@ -94,7 +94,7 @@ const Navbar = () => {
                   href="#"
                   className="group relative block h-10 overflow-hidden rounded-sm px-4 py-2 text-gray-900 dark:text-white hover:text-white"
                 >
-                  <span className="relative z-10">Contact</span>
+                  <span className="relative z-50">Contact</span>
                   <span className="absolute inset-0 overflow-hidden rounded-sm">
                     <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-black transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>

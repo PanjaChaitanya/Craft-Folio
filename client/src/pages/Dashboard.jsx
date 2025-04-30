@@ -63,7 +63,7 @@ export default function Dashboard() {
           <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
           <div className="flex items-center space-x-4">
             <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
-              <span className="text-indigo-700 font-medium">A</span>
+              <span className="text-indigo-700 font-medium">C</span>
             </div>
           </div>
         </header>

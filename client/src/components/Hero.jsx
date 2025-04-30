@@ -4,8 +4,21 @@ import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Magnet from './Magnet'
 import BlurText from "./BlurText";
+import {useEffect, useState} from 'react'
+import { getProfiles } from '../api'
 
 const Hero = () => {
+	const [profile, setProfile] = useState(null);
+	
+	useEffect(() => {
+    getProfiles().then(res => {
+      if (res.data.length > 0) {
+        setProfile(res.data[0]); // just pick the first profile
+      }
+    });
+  }, []);
+
+  if (!profile) return null; // show nothing until profile loads
 	return (
 		<div
 			id="home"
@@ -23,34 +36,46 @@ const Hero = () => {
 					<div>
 						<h1 className="text-5xl md:text-6xl font-semibold mt-2">
 							<BlurText
-							text="Chaitanya Panja"
+							text={profile.name}
 							delay={150}
 							animateBy="lettters"
 							direction="bottom"
 							/>
 						</h1>
 						<h3 className="text-2xl md:text-3xl text-gray-600 mt-2">
-							Frontend Developer
+							{profile.jobTitle}
 						</h3>
 					</div>
 
 					<div className="space-y-2 pt-1">
 						<div className="flex items-center space-x-2">
 							<p className="text-lg text-gray-600 max-w-[500px]">
-								As a passionate frontend developer, I specialize in turning
-								visionary concepts into stunning, user-friendly web
-								applications. Let&#39;s collaborate to bring your ideas to life and
-								create solutions that make a difference in the world.
+								{profile.bio}
 							</p>
 						</div>
 						<div className="flex justify-between">
-							<Magnet padding={50} disabled={false} magnetStrength={1}>
-								<button className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">Resume</button>
-							</Magnet>
-							<Magnet padding={50} disabled={false} magnetStrength={1}>
-								<button className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">Contact</button>
-							</Magnet>
-						</div>
+              {profile.resume && (
+                <Magnet padding={50} disabled={false} magnetStrength={1}>
+                  <a
+                    href={profile.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+                  >
+                    Resume
+                  </a>
+                </Magnet>
+              )}
+              <Magnet padding={50} disabled={false} magnetStrength={1}>
+                <a
+                  href={`mailto:${profile.socialLinks.find(link => link.includes('@')) || ''}`}
+                  className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+                >
+                  Contact
+                </a>
+              </Magnet>
+            </div>
+
 						<div className="flex items-center space-x-4 pt-10">
 							<Link to="https://github.com/Moyo-Made">
 								<FaGithub size={20} />
@@ -79,7 +104,6 @@ const Hero = () => {
 							alt="Profile"
 							width={1920}
 							height={1920}
-							priority
 							className="w-full h-full object-cover"
 						/>
 					</div>
